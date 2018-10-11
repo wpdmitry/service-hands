@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
+import GradientPicker from 'components/GradientPicker/GradientPicker';
 
 import './App.css';
 
-const a = { extensions: ['.js', '.jsx'], extensions2: ['.js', '.jsx'], extension3s: ['.js', '.jsx'] };
+class App extends Component {
+  state = {
+    gradient: null
+  };
 
-class App extends React.Component {
+  changeGradient = gradient => this.setState({ gradient });
+
   render() {
-    return <div className="app">Hello, hands</div>;
+    const { gradient } = this.state;
+
+    return (
+      <div className="app" style={{ background: gradient }}>
+        <GradientPicker onChange={this.changeGradient} />
+      </div>
+    );
   }
 }
 

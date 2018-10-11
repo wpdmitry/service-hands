@@ -9,7 +9,7 @@ module.exports = (env, argv) => {
 
   return {
     output: {
-      filename: 'bundle.js'
+      filename: IS_DEVELOPMENT ? 'bundle.js' : 'bundle.min.js'
     },
     devServer: {
       contentBase: path.resolve(__dirname, 'dist'),
@@ -24,7 +24,8 @@ module.exports = (env, argv) => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/preset-react']
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+              plugins: ['@babel/plugin-proposal-class-properties']
             }
           }
         },
@@ -44,12 +45,15 @@ module.exports = (env, argv) => {
       }),
       new CleanWebpackPlugin(['dist']),
       new MiniCssExtractPlugin({
-        filename: 'bundle.css'
+        filename: 'style.min.css'
       }),
       ...(IS_DEVELOPMENT ? [new webpack.HotModuleReplacementPlugin()] : [])
     ],
     resolve: {
-      extensions: ['.js', '.jsx']
+      extensions: ['.js', '.jsx'],
+      alias: {
+        components: path.resolve(__dirname, 'src/components/')
+      }
     }
   };
 };

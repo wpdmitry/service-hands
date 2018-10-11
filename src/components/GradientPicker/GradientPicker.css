@@ -1,0 +1,77 @@
+.gradient-picker {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  max-width: 90%;
+
+  &__color {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+
+  &__label {
+    margin: 0 0 5px 5px;
+    font-size: 1rem;
+  }
+
+  &__input {
+    height: 50px;
+    width: 100%;
+    position: relative;
+  }
+
+  &__color-input {
+    height: 100%;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    border: 2px solid #e4e4e4;
+
+    &:hover,
+    &:focus {
+      border-color: #bababa;
+      outline: none;
+    }
+  }
+
+  &__color-picker {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    right: 20px;
+    box-sizing: border-box;
+  }
+
+  &__buttons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__button {
+    height: 40px;
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 2px;
+    background-color: white;
+    border: 2px solid #e4e4e4;
+    font-size: 1.2rem;
+
+    &:hover {
+      background-color: #e4e4e4;
+    }
+
+    &:active,
+    &:focus {
+      background-color: #e0e0e0;
+      outline: none;
+    }
+
+    &:disabled {
+      background-color: #c1c1c1;
+      opacity: 0.5;
+    }
+  }
+}
